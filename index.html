@@ -1,32 +1,55 @@
+<!doctype html>
 <html>
     <head>
-        <title>Assignment One</title>
+        <title>Joe's Hotdog Stand</title>
     </head>
+
     <body>
-        <h1>Sofia A</h1>
-        <h2>Computer Science</h2>
-        IP Address: 130.64.64.33
-        </br>
-        Location: Zug, Switzerland
-        </br>
+        <h1>Joe's Hotdog Stand</h1>
+        <script>
+        numDogs = 0
+        numFries = 0
+        numSoda = 0
+        const hotdogPrice = 4.99
+        const friesPrice = 3.99
+        const sodaPrice = 1.79
 
-        <img src="zermatt.webp" ALIGN="left" style="display: block; width: 300px; height: auto;"/>
-        My favorite place is Zermatt, because growing up, I would ski there annually with my family and grandma, who has gone there since she was a child.
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
+        numDogs = prompt("How many hotdogs do you want?")
+        numFries = prompt("How many French fries do you want?")
+        numSoda = prompt("How many sodas do you want?")
 
-        <br />
-        My favorite restaurant: 
-        <a href="https://www.thaiblueelephant.com/" target="_blank">The Blue Elephant</a>
-        <br />
-        You'd never expect that I'm from Switzerland.
+        function showMoney(num)
+        {
+            rounded = Math.round(num * 100) / 100
+            str = rounded.toString()
+            if(str.indexOf('.') === -1) {
+                str += ".00"
+            } else if (str.split('.')[1].length === 1) {
+                str+="0"
+            }
+            return str
+        }
+
+        document.write("Number of hotdogs ordered: " + numDogs + "<br />")
+        document.write("Total cost of hotdogs: $" + (showMoney(numDogs * hotdogPrice)) + "<br />")
+        document.write("Number of fries ordered: " + numFries + "<br />")
+        document.write("Total cost of fries: $" + (showMoney(numFries * friesPrice)) + "<br />")
+        document.write("Number of sodas ordered: " + numSoda + "<br />")
+        document.write("Total cost of sodas: $" + (showMoney(numSoda * sodaPrice)) + "<br />")
+
+        total = (numDogs * hotdogPrice) + (numFries * friesPrice) + (numSoda * sodaPrice)
+        document.write("Subtotal before discount: $" + showMoney(total) + "<br />")
+        if (total >= 30) {
+            discount = total * 0.1
+            document.write("Discount: $" + showMoney(discount) + "<br />")
+            total -= discount
+            document.write("Subtotal after discount: $" + showMoney(total) + "<br />")
+        }
+        tax = total * 0.0625
+        document.write("Tax amount: $" + showMoney(tax) + "<br />")
+        total += tax
+        document.write("Final total: $" + showMoney(total) + "<br />")
+
+        </script>
     </body>
 </html>
